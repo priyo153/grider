@@ -1,0 +1,118 @@
+package grider;
+
+public class BinaryNode {
+
+	int data;
+	BinaryNode left;
+	BinaryNode right;
+
+	BinaryNode(int val) {
+		data = val;
+		left = null;
+		right = null;
+	}
+
+	void insert(int val) {
+
+		insertRec(this, val);
+	}
+
+	void insertRec(BinaryNode node, int val) {
+
+		if (node.data > val) {
+			if (node.left == null) {
+				node.left = new BinaryNode(val);
+				return;
+			}
+
+			insertRec(node.left, val);
+
+		} else if (node.data < val) {
+
+			if (node.right == null) {
+				node.right = new BinaryNode(val);
+				return;
+			}
+
+			insertRec(node.right, val);
+		}
+
+	}
+
+	boolean contains(int val) {
+		return containsRec(this, val);
+	}
+
+	boolean validate() {
+
+		return validateRec(this, this.data, this.data);
+	}
+
+	private boolean validateRec(BinaryNode node, int min, int max) {
+		if (node == null) {
+			return true;
+		}
+
+		if (node.data >= min && node.data <= max) {
+			
+			if (node.data > max) {
+				max = node.data;
+
+			}
+
+			if (node.data < min) {
+				min = node.data;
+			}
+			boolean res;
+			res = validateRec(node.left, min, max);
+			res = validateRec(node.right, min, max);
+			return res;
+		} 
+		else {
+			return false;
+		}
+
+	
+	}
+
+	boolean containsRec(BinaryNode node, int val) {
+
+		if (node == null) {
+			return false;
+
+		}
+
+		if (node.data == val) {
+			return true;
+		}
+
+		if (node.data > val) {
+			System.out.println(node.data);
+			return containsRec(node.left, val);
+		} else if (node.data < val) {
+			System.out.println(node.data);
+			return containsRec(node.right, val);
+		}
+
+		return false;
+
+	}
+
+	public static void main(String args[]) {
+
+		BinaryNode root = new BinaryNode(10);
+		root.insert(1);
+		root.insert(2);
+		root.insert(3);
+		root.insert(11);
+		root.insert(12);
+		root.insert(16);
+		root.insert(15);
+		root.insert(13);
+		root.insert(3);
+
+		System.out.println(root.validate());
+
+	}
+
+}

@@ -1,0 +1,16 @@
+package grider;
+
+public class BST {
+	
+	BinaryNode root;
+	
+	BST(BinaryNode node){
+		root=node;
+	}
+	
+	 void bstInsert(BinaryNode node) {
+		
+		if(node.v)
+	}
+
+}

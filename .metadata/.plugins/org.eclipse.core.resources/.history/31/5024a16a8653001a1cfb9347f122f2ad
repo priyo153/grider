@@ -1,0 +1,21 @@
+package grider;
+
+public class DetectCircularList {
+	
+	public static void main(String[] args) {
+		LinkedList lst=new LinkedList();
+		lst.insertLast(0);
+		lst.insertLast(1);
+		lst.insertLast(2);
+		lst.insertLast(3);
+		lst.insertLast(4);
+		lst.insertLast(5);
+		Node other=lst.getAt(2);
+		Node last=lst.getlast();
+		last.next=other;
+		lst.traverse();
+//		System.out.println(midpoint(lst).data);
+		
+	}
+
+}

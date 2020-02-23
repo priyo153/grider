@@ -1,0 +1,36 @@
+package grider;
+
+import java.util.List;
+
+class TreeNode{
+	int data;
+	List<TreeNode> children;
+	
+	TreeNode(int val){
+		data=val;
+	}
+	
+	void add(int val) {
+		children.add(new TreeNode(val));
+	}
+	
+	void remove(int val) {
+		children.removeIf(n -> (n.data==val));
+	}
+}
+
+public class Tree {
+	
+	
+	final TreeNode root;
+	
+	Tree(TreeNode n){
+		root=new TreeNode(0);
+		root.add(n);
+	}
+	
+	TreeNode getRoot() {
+		return root;
+	}
+
+}

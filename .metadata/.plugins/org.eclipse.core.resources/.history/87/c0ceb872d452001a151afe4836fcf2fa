@@ -1,0 +1,12 @@
+package grider;
+
+public class Midpoint {
+	
+	LinkedList lst=new LinkedList();
+	public static void main(String[] args) {
+	}
+	
+	
+	
+
+}

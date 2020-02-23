@@ -1,0 +1,61 @@
+package grider;
+
+import java.util.Arrays;
+
+public class Spiral {
+
+	public static void main(String[] args) {
+		spiral(5);
+	}
+
+	public static void spiral(int n) {
+
+		int num = 1;
+		int mat[][] = new int[n][n];
+
+		int limit = n * n;
+
+		int x = 0;
+		int y = 0;
+
+		int xdir = 0;
+		int ydir = 1;
+
+		for (int i = 1; i <= limit; i++) {
+			mat[x][y] = i;
+
+			if (x + y == n - 1 && x <= y) {
+
+				xdir = 1;
+				ydir = 0;
+			}
+
+			if (x == y && x + y >= n) {
+
+				xdir = 0;
+				ydir = -1;
+			}
+			if (x + y == n - 1 && x > y) {
+
+				xdir = -1;
+				ydir = 0;
+			}
+
+			if (x - y == 1 && x + y < n) {
+
+				xdir = 0;
+				ydir = 1;
+			}
+			x = x + xdir;
+			y = y + ydir;
+
+		}
+
+		for (int a[] : mat) {
+			System.out.println(Arrays.toString(a));
+
+		}
+
+	}
+
+}

@@ -1,0 +1,134 @@
+package grider;
+
+public class BinaryNode {
+
+	int data;
+	BinaryNode left;
+	BinaryNode right;
+
+	BinaryNode(int val) {
+		data = val;
+		left = null;
+		right = null;
+	}
+
+	void insert(int val) {
+
+		insertRec(this, val);
+	}
+
+	void insertRec(BinaryNode node, int val) {
+
+		if (node.data > val) {
+			if (node.left == null) {
+				node.left = new BinaryNode(val);
+				return;
+			}
+
+			insertRec(node.left, val);
+
+		} else if (node.data < val) {
+
+			if (node.right == null) {
+				node.right = new BinaryNode(val);
+				return;
+			}
+
+			insertRec(node.right, val);
+		}
+
+	}
+
+	boolean contains(int val) {
+		return containsRec(this, val);
+	}
+
+	boolean validate() {
+
+		int res= validateRec(this, this.data, this.data);
+		if(res==this.data) {
+			return true;
+			
+		}
+		else {
+			return false;
+		}
+	}
+
+	private int validateRec(BinaryNode node, int min,int max) {
+		
+		
+		min=node.left.data;
+		max=node.right.data;
+		
+		if(node.left!=null) {
+			int left=validateRec(node.left,min,max);
+			
+			if(left>max) {
+				return left;
+			}
+			else {
+				return min;
+			}
+		}
+		
+		if(node.right!=null) {
+			int right=validateRec(node.left,min,max);
+			
+			if(right<min) {
+				return right;
+			}
+			else {
+				return max;
+			}
+		}
+		
+		return node.data;
+		
+		
+
+	}
+
+	boolean containsRec(BinaryNode node, int val) {
+
+		if (node == null) {
+			return false;
+
+		}
+
+		if (node.data == val) {
+			return true;
+		}
+
+		if (node.data > val) {
+			System.out.println(node.data);
+			return containsRec(node.left, val);
+		} else if (node.data < val) {
+			System.out.println(node.data);
+			return containsRec(node.right, val);
+		}
+
+		return false;
+
+	}
+
+	public static void main(String args[]) {
+
+		BinaryNode root = new BinaryNode(10);
+		root.insert(1);
+		root.insert(2);
+		root.insert(3);
+		root.insert(11);
+		root.insert(12);
+		root.insert(16);
+		root.insert(15);
+		root.insert(13);
+		root.insert(3);
+
+		root.left.right.data = 98;
+
+		System.out.println(root.validate());
+
+	}
+
+}

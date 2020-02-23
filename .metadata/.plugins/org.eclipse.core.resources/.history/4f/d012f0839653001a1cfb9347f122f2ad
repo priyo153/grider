@@ -1,0 +1,24 @@
+package grider;
+
+import java.util.List;
+
+class Node{
+	int data;
+	List<Node> child;
+	
+	Node(int val){
+		data=val;
+	}
+	
+	void add(int val) {
+		child.add(new Node(val));
+	}
+	
+	void remove(int val) {
+		child.removeIf(n -> (n.data==val));
+	}
+}
+
+public class Tree {
+
+}

@@ -1,0 +1,55 @@
+package grider;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BreadthFirstSearch {
+	
+	static List<TreeNode> breadthFirstSearch(Tree t){
+		
+		List<TreeNode> list1=new ArrayList<>();
+		List<TreeNode> list2=new ArrayList<>();
+		
+		list1.add(t.root);
+		
+		while(!list1.isEmpty()) {
+			
+			list2.add(list1.get(0));
+			list1.remove(0);
+			list1.addAll(list2.get(0).children);
+			System.out.println(list1);
+			if(list1.size()>10) {
+				break;
+			}
+			
+			
+		}
+		return list2;
+		
+	}
+
+	public static void main(String[] args) {
+
+		Tree t=new Tree(1);
+		TreeNode current=t.getRoot();
+		TreeNode prev=t.getRoot();
+		current.add(2);
+		current.add(3);
+		current.add(4);
+		
+		current=current.children.get(0);
+		current.add(5);
+		current.add(6);
+		current=prev;
+		current=current.children.get(1);
+		current.add(7);
+		current.add(8);
+		
+		System.out.println( breadthFirstSearch(t));
+		
+		
+		
+
+	}
+
+}

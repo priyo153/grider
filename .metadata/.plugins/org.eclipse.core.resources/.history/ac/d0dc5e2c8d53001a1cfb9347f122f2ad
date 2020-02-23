@@ -1,0 +1,40 @@
+package grider;
+
+public class FindFromTail {
+	static Node findFromTail(LinkedList lst,int num) {
+		
+		Node slow=lst.getFirst();
+		Node fast=lst.getFirst();
+		
+		fast=lst.getAt(num-1);
+		
+		while(fast.next!=null) {
+			
+			fast=fast.next;
+			slow=slow.next;
+			
+		}
+		
+		return slow;
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		LinkedList lst=new LinkedList();
+		lst.insertLast(0);
+		lst.insertLast(1);
+		lst.insertLast(2);
+		lst.insertLast(3);
+		lst.insertLast(4);
+		lst.insertLast(5);
+		
+		
+		
+		System.out.println("loop detected "+findFromTail(lst,3));
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,32 @@
+package grider;
+
+public class BST {
+	
+	BinaryNode root;
+	
+	BST(BinaryNode node){
+		root=node;
+	}
+	
+	 void insert(BinaryNode node,int val) {
+		 
+		if(node==null) {
+			node=new BinaryNode(val);
+			return;
+		}
+		
+		if(node.data<=val) {
+			insert(node.left,val);
+		}
+		else if(node.data>val) {
+			insert(node.left,val);
+		}
+		
+	}
+	 
+	 public static void main(String args[]) {
+		 
+		 BST tree=new BST(20);
+	 }
+
+}

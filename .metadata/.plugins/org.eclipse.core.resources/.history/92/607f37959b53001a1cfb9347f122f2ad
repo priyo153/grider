@@ -1,0 +1,24 @@
+package grider;
+
+import java.util.List;
+
+public class BreadthFirstSearch {
+	
+	List<TreeNode> BreadthFirstSearch(Tree t){
+		
+	}
+
+	public static void main(String[] args) {
+
+		Tree t=new Tree(1);
+		TreeNode current=t.getRoot();
+		current.add(2);
+		current.add(3);
+		current.add(4);
+		
+		
+		
+
+	}
+
+}
